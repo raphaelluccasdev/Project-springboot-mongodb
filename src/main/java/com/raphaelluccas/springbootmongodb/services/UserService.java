@@ -1,6 +1,7 @@
 package com.raphaelluccas.springbootmongodb.services;
 
 import com.raphaelluccas.springbootmongodb.domain.User;
+import com.raphaelluccas.springbootmongodb.exceptions.ObjectNotFoundException;
 import com.raphaelluccas.springbootmongodb.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,13 @@ public class UserService {
 
     public List<User> findAll() {
         return repo.findAll();
+    }
 
+    public User findById(String id) {
+        User user = repo.findById(id).orElse(null);
+        if (user == null) {
+            throw new ObjectNotFoundException("Object not found");
+        }
+        return user;
     }
 }
