@@ -1,6 +1,7 @@
 package com.raphaelluccas.springbootmongodb.services;
 
 import com.raphaelluccas.springbootmongodb.domain.User;
+import com.raphaelluccas.springbootmongodb.dto.UserDto;
 import com.raphaelluccas.springbootmongodb.exceptions.ObjectNotFoundException;
 import com.raphaelluccas.springbootmongodb.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,4 +26,13 @@ public class UserService {
         }
         return user;
     }
+
+    public User insert(User obj) {
+        return repo.insert(obj);
+    }
+
+    public User fromDto(UserDto objDto) {
+        return new User(objDto.getId(), objDto.getName(),  objDto.getEmail());
+    }
+
 }
