@@ -1,11 +1,13 @@
 package com.raphaelluccas.springbootmongodb.domain;
 
 import com.raphaelluccas.springbootmongodb.dto.AuthorDto;
+import com.raphaelluccas.springbootmongodb.dto.CommentDTO;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 @Document
@@ -18,6 +20,8 @@ public class Post implements Serializable {
     private String title;
     private String body;
     private AuthorDto author;
+
+    private List<CommentDTO> comments;
 
     public Post() {
     }
@@ -64,6 +68,14 @@ public class Post implements Serializable {
 
     public AuthorDto getAuthor() {
         return author;
+    }
+
+    public List<CommentDTO> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<CommentDTO> comments) {
+        this.comments = comments;
     }
 
     public void setAuthor(AuthorDto author) {
