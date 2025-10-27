@@ -6,6 +6,7 @@ import java.util.TimeZone;
 
 import com.raphaelluccas.springbootmongodb.domain.Post;
 import com.raphaelluccas.springbootmongodb.domain.User;
+import com.raphaelluccas.springbootmongodb.dto.AuthorDto;
 import com.raphaelluccas.springbootmongodb.repository.PostRepository;
 import com.raphaelluccas.springbootmongodb.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,8 +37,8 @@ public class Instantiation implements CommandLineRunner {
         User alex = new User(null, "Alex Green", "alex@gmail.com");
         User bob = new User(null, "Bob Grey", "bob@gmail.com");
 
-        Post post1 = new Post(null,sdf.parse("21/03/2018"), "Partiu viagem", "Vou viajar para São Paulo, abraços", maria);
-        Post post2 = new Post(null,sdf.parse("23/03/2018"), "Bom dia", "Acordei feliz hoje!", maria);
+        Post post1 = new Post(null,sdf.parse("21/03/2018"), "Partiu viagem", "Vou viajar para São Paulo, abraços", new AuthorDto(maria));
+        Post post2 = new Post(null,sdf.parse("23/03/2018"), "Bom dia", "Acordei feliz hoje!", new AuthorDto(maria));
 
         userReposiroty.saveAll(Arrays.asList(maria, alex, bob));
         postReposiroty.saveAll(Arrays.asList(post1, post2));
